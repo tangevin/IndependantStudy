@@ -838,7 +838,7 @@ public class Pathfinder : MonoBehaviour
     public void DynamicRaycastUpdate(Bounds b)
     {
         Vector3 startPos = new Vector3(b.min.x, 0, b.min.z);
-        UnityEngine.Debug.Log("Startpos dyn: " + startPos);
+        //UnityEngine.Debug.Log("Startpos dyn: " + startPos);
         Node startNode = FindClosestNode(startPos);
 
         if (startNode == null)

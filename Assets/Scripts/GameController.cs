@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour {
 		while(true) {
 			for(int i = 0; i < hazardCount; i++) {
 				Vector3 spawnPosition = new Vector3(spawnValues.x, spawnValues.y, Random.Range(-spawnValues.z, spawnValues.z));
-				Quaternion spawnRotation = enemy.rigidbody.rotation;
+				Quaternion spawnRotation = enemy.transform.rotation;
 				
 				Instantiate(enemy, spawnPosition, spawnRotation);
 				

@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c4acf42fa4d81a498faec7fa36593cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tilesize: 15
+  Tilesize: 12
   MaxFalldownHeight: 50
   ClimbLimit: 50
   HeuristicAggression: 0
@@ -49,11 +49,11 @@ MonoBehaviour:
   MapEndPosition: {x: 450, y: 315}
   DisallowedTags:
   - Tower
-  - Enemy
   - Wall
-  IgnoreTags: []
+  IgnoreTags:
+  - Enemy
   MoveDiagonal: 1
-  DrawMapInEditor: 0
+  DrawMapInEditor: 1
   CheckFullTileSize: 0
 --- !u!1001 &100100000
 Prefab:
