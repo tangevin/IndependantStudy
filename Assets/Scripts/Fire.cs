@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Fire : MonoBehaviour {
-	public float fireRange;
 	public static Weapon weapon;
 
 	private List<Enemy> enemyList;
@@ -21,6 +20,7 @@ public class Fire : MonoBehaviour {
 			if (enemyList[i].getHealth() <= 0)
 			{
 				enemyList.RemoveAt(i);
+				GameController.resources += 50;
 			}
 		}
 
