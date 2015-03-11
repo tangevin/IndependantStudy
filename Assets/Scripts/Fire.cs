@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Fire : MonoBehaviour {
 	public float fireRange;
-	public Weapon weapon;
+	public static Weapon weapon;
 
 	private List<Enemy> enemyList;
 	private float fireTimer;
@@ -38,7 +38,7 @@ public class Fire : MonoBehaviour {
 		}
 		else
 		{
-			fireTimer -= Time.deltaTime;
+			fireTimer -= Time.fixedDeltaTime;
 		}
 	}
 

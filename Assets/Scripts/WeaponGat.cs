@@ -7,7 +7,7 @@ public class WeaponGat : Weapon {
 	void Start () {
 		this.damage = 10;
 		this.range = 200.0f;
-		this.fireRate = 0.1f;
+		this.fireRate = 0.125f;
 		this.ammoCapacity = 5;
 		this.reloadSpeed = 5;
 		this.name = "Gattling";
