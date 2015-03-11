@@ -2,21 +2,22 @@
 using System.Collections;
 
 public abstract class Weapon : MonoBehaviour {
-	private int damage;
-	private int range;
-	private int fireRate;
-	private int ammoCapacity;
-	private int reloadSpeed;
+	protected int damage;
+	protected float range;
+	protected float fireRate;
+	protected int ammoCapacity;
+	protected float reloadSpeed;
+	protected string name;
 
 	public int getDamage() {
 		return this.damage;
 	}
 
-	public int getRange() {
+	public float getRange() {
 		return this.range;
 	}
 
-	public int getFireRate() {
+	public float getFireRate() {
 		return this.fireRate;
 	}
 
@@ -24,7 +25,11 @@ public abstract class Weapon : MonoBehaviour {
 		return this.ammoCapacity;
 	}
 
-	public int getReloadSpeed() {
+	public float getReloadSpeed() {
 		return this.reloadSpeed;
+	}
+
+	public string getName() {
+		return this.name;
 	}
 }

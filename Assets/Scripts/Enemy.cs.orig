@@ -34,6 +34,10 @@ public class Enemy : Pathfinding {
 		return Path.Count > 0;
 	}
 
+<<<<<<< HEAD
+	public string ToString() {
+		return "Position: " + this.transform.position;
+=======
 	public int damage(int dam)
 	{
 		this.health -= dam;
@@ -49,5 +53,6 @@ public class Enemy : Pathfinding {
 	public int getHealth()
 	{
 		return this.health;
+>>>>>>> 513f0c77a25e48c33000cac53bd77d7730acf8e5
 	}
 }
