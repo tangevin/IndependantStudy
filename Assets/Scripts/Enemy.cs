@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class Enemy : Pathfinding {
+
+	private int health = 100;
+
 	private GameObject target;
 	private Vector3 endPosition;
 	
@@ -24,5 +27,22 @@ public class Enemy : Pathfinding {
 	public bool hasPath()
 	{
 		return Path.Count > 0;
+	}
+
+	public int damage(int dam)
+	{
+		this.health -= dam;
+
+		if (this.health <= 0)
+		{
+			GameObject.Destroy(this.gameObject);
+		}
+
+		return this.health;
+	}
+
+	public int getHealth()
+	{
+		return this.health;
 	}
 }
