@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GameController : MonoBehaviour {
@@ -8,15 +9,44 @@ public class GameController : MonoBehaviour {
 	public float spawnWait;
 	public float startWait;
 	public float waveWait;
+	public int waves;
+	private bool startWave = false;
+	private bool wavesStarted = false;
+
+	public Button startButton;
+	public Button mechButton;
+	public Button pilotButton;
+
+	public Text WaveNumberText;
+	public Text EnemiesRemainingText;
+	public Text ResourcesText;
+	public int resources {get; set;}
+	public Text HealthText;
+	public int health {get; set;}
 	
 	void Start() {
-		StartCoroutine(SpawnEnemies());
+		resources = 200;
+		health = 20;
+	}
+
+	void Update() {
+		if (startWave == true && wavesStarted == false) {
+			wavesStarted = true;
+			GameObject.FindGameObjectWithTag("Ground").GetComponent<HighlightTile>().setWaveStarted(true);
+			StartCoroutine(SpawnEnemies());
+		}
+
+		EnemiesRemainingText.text = GameObject.FindGameObjectsWithTag("Enemy").Length.ToString();
+		ResourcesText.text = resources.ToString();
+		HealthText.text = health.ToString();
 	}
 	
 	IEnumerator SpawnEnemies() {
 		yield return new WaitForSeconds(startWait);
+		int curWave = 0;
+		WaveNumberText.text = curWave.ToString();
 		
-		while(true) {
+		while(curWave++ < waves) {
 			for(int i = 0; i < hazardCount; i++) {
 				Vector3 spawnPosition = new Vector3(spawnValues.x, spawnValues.y, Random.Range(-spawnValues.z, spawnValues.z));
 				Quaternion spawnRotation = enemy.transform.rotation;
@@ -28,5 +58,16 @@ public class GameController : MonoBehaviour {
 			
 			yield return new WaitForSeconds(waveWait);
 		}
+
+		startWave = false;
+		wavesStarted = false;
+		startButton.interactable = true;
+		mechButton.interactable = true;
+		pilotButton.interactable = true;
+		GameObject.FindGameObjectWithTag("Ground").GetComponent<HighlightTile>().setWaveStarted(false);
+	}
+
+	public void StartWave() {
+		startWave = true;
 	}
 }

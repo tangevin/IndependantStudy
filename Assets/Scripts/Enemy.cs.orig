@@ -19,18 +19,14 @@ public class Enemy : Pathfinding {
 	
 	void Update ()
 	{
+		FindPath(this.transform.position, endPosition);
 		if (!hasPath())
 		{
-			Debug.Log("Enemy doesnt have path");
 			ground.removeLastWallsPlaced();
 			FindPath(this.transform.position, endPosition);
 		}
 		
 		Move();
-
-		if (Vector3.Distance(this.transform.position, endPosition) <= 5) {
-			Destroy(this.gameObject);
-		}
 	}
 
 	public bool hasPath()
@@ -38,6 +34,10 @@ public class Enemy : Pathfinding {
 		return Path.Count > 0;
 	}
 
+<<<<<<< HEAD
+	public string ToString() {
+		return "Position: " + this.transform.position;
+=======
 	public int damage(int dam)
 	{
 		this.health -= dam;
@@ -53,5 +53,6 @@ public class Enemy : Pathfinding {
 	public int getHealth()
 	{
 		return this.health;
+>>>>>>> 513f0c77a25e48c33000cac53bd77d7730acf8e5
 	}
 }
