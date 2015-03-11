@@ -1124,6 +1124,11 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11460676, guid: ffb36962d3074b04885f91da1daec457, type: 2}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11458898, guid: f1df2eab8f519c3409230bb4c2ec4643,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ffb36962d3074b04885f91da1daec457, type: 2}
   m_RootGameObject: {fileID: 1466400196}
@@ -1455,6 +1460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRange: 150
+  weapon: {fileID: 11402030, guid: 0c2550f8d6da1d1418e15f21ec51e195, type: 2}
 --- !u!54 &1164839779
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2054,6 +2060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRange: 150
+  weapon: {fileID: 11458898, guid: f1df2eab8f519c3409230bb4c2ec4643, type: 2}
 --- !u!54 &1466400199
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2705,6 +2712,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11460676, guid: ffb36962d3074b04885f91da1daec457, type: 2}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11402030, guid: 0c2550f8d6da1d1418e15f21ec51e195,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ffb36962d3074b04885f91da1daec457, type: 2}
   m_RootGameObject: {fileID: 1164839776}

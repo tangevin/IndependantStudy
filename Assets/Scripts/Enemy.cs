@@ -19,14 +19,18 @@ public class Enemy : Pathfinding {
 	
 	void Update ()
 	{
-		FindPath(this.transform.position, endPosition);
 		if (!hasPath())
 		{
+			Debug.Log("Enemy doesnt have path");
 			ground.removeLastWallsPlaced();
 			FindPath(this.transform.position, endPosition);
 		}
 		
 		Move();
+
+		if (Vector3.Distance(this.transform.position, endPosition) <= 5) {
+			Destroy(this.gameObject);
+		}
 	}
 
 	public bool hasPath()

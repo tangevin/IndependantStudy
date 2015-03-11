@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Fire : MonoBehaviour {
-	public float fireRange;
 	public Weapon weapon;
 
 	private List<Enemy> enemyList;
