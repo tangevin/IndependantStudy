@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlaceWall : MonoBehaviour {
 	public GameObject wallNode;
 	public GameObject wall;
 	private Ground curMap;
+	private List<GameObject> wallsToPlace;
 
 	void OnMouseDown() {
+		wallsToPlace = new List<GameObject>();
 		curMap = GameObject.Find("Ground").GetComponent<Ground>();
 		Vector3 mousePos = Input.mousePosition;
 
@@ -20,7 +23,7 @@ public class PlaceWall : MonoBehaviour {
 			Vector3 spawnPosition = new Vector3(xPos, wallNode.transform.position.y, zPos);
 			Quaternion spawnRotation = Quaternion.identity;
 			
-			Instantiate(wallNode, spawnPosition, spawnRotation);
+			wallsToPlace.Add((GameObject)Instantiate(wallNode, spawnPosition, spawnRotation));
 
 			curMap.addWall(widthPos, heightPos);
 
@@ -36,6 +39,8 @@ public class PlaceWall : MonoBehaviour {
 			if (heightPos + 1 < curMap.GetComponent<Ground>().getHeight()) {
 				checkUpForWall(widthPos, heightPos, xPos, zPos);
 			}
+
+			curMap.setLastWallsPlaced(wallsToPlace, new int[2] {widthPos, heightPos});
 		}
 	}
 
@@ -45,7 +50,7 @@ public class PlaceWall : MonoBehaviour {
 			Vector3 wallPosition = new Vector3(x, wall.transform.position.y, z + 15);
 			Quaternion wallRotation = Quaternion.Euler(new Vector3(0, 90, 0));
 			
-			Instantiate(wall, wallPosition, wallRotation);
+			wallsToPlace.Add((GameObject)Instantiate(wall, wallPosition, wallRotation));
 		}
 	}
 
@@ -55,7 +60,7 @@ public class PlaceWall : MonoBehaviour {
 			Vector3 wallPosition = new Vector3(x, wall.transform.position.y, z - 15);
 			Quaternion wallRotation = Quaternion.Euler(new Vector3(0, 90, 0));
 			
-			Instantiate(wall, wallPosition, wallRotation);
+			wallsToPlace.Add((GameObject)Instantiate(wall, wallPosition, wallRotation));
 		}
 	}
 
@@ -64,7 +69,7 @@ public class PlaceWall : MonoBehaviour {
 			Vector3 wallPosition = new Vector3(x - 15, wall.transform.position.y, z);
 			Quaternion wallRotation = Quaternion.identity;
 			
-			Instantiate(wall, wallPosition, wallRotation);
+			wallsToPlace.Add((GameObject)Instantiate(wall, wallPosition, wallRotation));
 		}
 	}
 
@@ -73,7 +78,26 @@ public class PlaceWall : MonoBehaviour {
 			Vector3 wallPosition = new Vector3(x + 15, wall.transform.position.y, z);
 			Quaternion wallRotation = Quaternion.identity;
 			
-			Instantiate(wall, wallPosition, wallRotation);
+			wallsToPlace.Add((GameObject)Instantiate(wall, wallPosition, wallRotation));
 		}
+	}
+
+	private bool checkForPath() {
+		GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+		Debug.Log(enemies.Length);
+		GameObject target = GameObject.FindGameObjectWithTag("Base");
+		Vector3 endPosition = target.transform.position;
+
+		foreach (GameObject obj in enemies) {
+			Enemy enemy = obj.GetComponent<Enemy>();
+			enemy.FindPath(enemy.transform.position, endPosition);
+			Debug.Log("Current enemy path: " + enemy.Path.Count);
+			if (!enemy.hasPath()) {
+				Debug.Log("Enemy at " + enemy.transform.position + " does not have a path.");
+				return false;
+			}
+		}
+
+		return true;
 	}
 }

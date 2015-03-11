@@ -15,7 +15,7 @@ GameObject:
   - 114: {fileID: 11476090}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,7 +84,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlight: {fileID: 197996, guid: b01b94ab435939143b654994bb534412, type: 2}
-  invalidTileMat: {fileID: 2100000, guid: 894773de0a5d2de4c979c7e53e3de32c, type: 2}
 --- !u!114 &11476090
 MonoBehaviour:
   m_ObjectHideFlags: 1
