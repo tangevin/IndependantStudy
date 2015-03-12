@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class Fire : MonoBehaviour {
 	public Weapon weapon;
+	public GameObject bullet;
 
 	private List<Enemy> enemyList = new List<Enemy>();
 	private float fireTimer;
@@ -41,21 +42,38 @@ public class Fire : MonoBehaviour {
 			}
 		}
 
-		if (fireTimer < 0)
+		if (fireTimer < 0 && !GetComponent<MechMove>().isMoving())
 		{
-			if (enemyList.Count > 0)
-			{
-				Debug.Log(weapon.getName() + " Fire!!");
-				if (enemyList[0].damage(weapon.getDamage()) <= 0)
-				{
-					enemyList.RemoveAt(0);
-				}
-			}
+			shoot();
 			fireTimer = weapon.getFireRate();
 		}
 		else
 		{
 			fireTimer -= Time.fixedDeltaTime;
+		}
+	}
+
+	void shoot()
+	{
+		if (enemyList.Count > 0)
+		{
+			GameObject shot;
+			Vector3 start = this.GetComponent<Rigidbody>().position;
+
+			Debug.Log("Making a bullet");
+			shot = Instantiate(bullet, start, this.GetComponent<Rigidbody>().rotation) as GameObject;
+			if (shot)
+			{
+				Debug.Log("GO!");
+				shot.GetComponent<Bullet>().startBullet(start, enemyList[0].GetComponent<Rigidbody>().position, weapon.getSpeed());
+			}
+
+
+			Debug.Log(weapon.getName() + " Fire!!");
+			if (enemyList[0].damage(weapon.getDamage()) <= 0)
+			{
+				enemyList.RemoveAt(0);
+			}
 		}
 	}
 

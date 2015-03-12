@@ -7,6 +7,7 @@ public class MechMove : Pathfinding {
 	private GameObject target;
 	private Vector3 endPosition;
 	private Ground ground;
+	private bool moving = false;
 	
 	void Start()
 	{
@@ -18,6 +19,11 @@ public class MechMove : Pathfinding {
 	{
 		if (Vector3.Distance(this.transform.position, endPosition) > 5 && hasPath()) {
 			Move();
+			moving = true;
+		}
+		else
+		{
+			moving = false;
 		}
 	}
 	
@@ -57,5 +63,9 @@ public class MechMove : Pathfinding {
 
 	public bool isSelected() {
 		return this.selected;
+	}
+
+	public bool isMoving() {
+		return this.moving;
 	}
 }

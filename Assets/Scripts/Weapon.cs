@@ -5,6 +5,7 @@ public abstract class Weapon {
 	protected int damage;
 	protected float range;
 	protected float fireRate;
+	protected float speed;
 	protected int ammoCapacity;
 	protected float reloadSpeed;
 	protected string name;
@@ -31,5 +32,9 @@ public abstract class Weapon {
 
 	public string getName() {
 		return this.name;
+	}
+
+	public float getSpeed() {
+		return this.speed;
 	}
 }

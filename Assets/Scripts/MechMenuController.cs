@@ -8,6 +8,7 @@ public class MechMenuController : MonoBehaviour {
 	private int weaponIndex;
 	private List<Fire> mechs;
 	private List<Weapon> weapons;
+	private Fire selectedMech;
 
 	// Use this for initialization
 	void Start () {
@@ -15,8 +16,9 @@ public class MechMenuController : MonoBehaviour {
 		PersistentData persistantData = data.GetComponent<PersistentData>();
 		mechs = persistantData.mechs;
 		weapons = persistantData.weapons;
+		selectedMech = mechs[0];
 
-		weaponText.text = mechs[0].getWeapon().getName();
+		weaponText.text = selectedMech.getWeapon().getName();
 
 		int i = 0;
 		foreach (Weapon weapon in weapons) {
@@ -29,10 +31,11 @@ public class MechMenuController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 
 	public void weaponUp() {
+		Debug.Log("!!HERE");
 		this.weaponIndex++;
 		if (this.weaponIndex == weapons.Count) {
 			this.weaponIndex = 0;
@@ -42,6 +45,7 @@ public class MechMenuController : MonoBehaviour {
 	}
 
 	public void weaponDown() {
+		Debug.Log("!YAR");
 		this.weaponIndex--;
 		if (this.weaponIndex < 0) {
 			this.weaponIndex = weapons.Count - 1;
@@ -51,6 +55,6 @@ public class MechMenuController : MonoBehaviour {
 	}
 
 	public void setMechWeapon() {
-		mechs[0].setWeapon(weapons[this.weaponIndex]);
+		selectedMech.setWeapon(weapons[this.weaponIndex]);
 	}
 }

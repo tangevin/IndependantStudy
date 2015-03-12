@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class PersistentData : MonoBehaviour {
 	public List<Weapon> weapons {get; set;}
 	public List<Fire> mechs {get; set;}
+	public Fire selectedMech;
 
 	// Use this for initialization
 	void Start () {
