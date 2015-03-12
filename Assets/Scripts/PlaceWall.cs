@@ -41,15 +41,6 @@ public class PlaceWall : MonoBehaviour {
 			}
 
 			curMap.setLastWallsPlaced(wallsToPlace, new int[2] {widthPos, heightPos});
-			GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-			foreach (GameObject obj in enemies) {
-				obj.GetComponent<Enemy>().FindPath(obj.transform.position, GameObject.FindGameObjectWithTag("Base").transform.position);
-			}
-
-			GameObject[] mechs = GameObject.FindGameObjectsWithTag("Tower");
-			foreach (GameObject obj in mechs) {
-				obj.GetComponent<MechMove>().FindPath(obj.transform.position, obj.GetComponent<MechMove>().getEndPos());
-			}
 		}
 	}
 

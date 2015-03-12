@@ -12,6 +12,7 @@ GameObject:
   - 23: {fileID: 2303456}
   - 114: {fileID: 11459464}
   - 135: {fileID: 13537040}
+  - 114: {fileID: 11470082}
   m_Layer: 8
   m_Name: Wall
   m_TagString: Wall
@@ -303,6 +304,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UpdateTimer: .5
+--- !u!114 &11470082
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2da7b055f3799640a62ad4196dd388b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &13537040
 SphereCollider:
   m_ObjectHideFlags: 1
