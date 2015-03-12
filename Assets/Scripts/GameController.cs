@@ -20,9 +20,9 @@ public class GameController : MonoBehaviour {
 	public Text WaveNumberText;
 	public Text EnemiesRemainingText;
 	public Text ResourcesText;
-	public int resources {get; set;}
+	public static int resources {get; set;}
 	public Text HealthText;
-	public int health {get; set;}
+	public static int health {get; set;}
 	
 	void Start() {
 		resources = 200;
