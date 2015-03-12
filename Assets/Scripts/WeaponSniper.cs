@@ -7,7 +7,7 @@ public class WeaponSniper : Weapon {
 	{
 		this.damage = 100;
 		this.range = 400.0f;
-		this.fireRate = 1.25f;
+		this.fireRate = 2f;
 		this.ammoCapacity = 5;
 		this.reloadSpeed = 5;
 		this.name = "Sniper";

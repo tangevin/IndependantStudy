@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Fire : MonoBehaviour {
 	public float fireRange;
-	public static Weapon weapon;
+	public static Weapon weapon = new WeaponGat();
 
 	private List<Enemy> enemyList;
 	private float fireTimer;

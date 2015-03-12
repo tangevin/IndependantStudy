@@ -29,7 +29,7 @@ public class Enemy : Pathfinding {
 		Move();
 
 		if (Vector3.Distance(this.transform.position, endPosition) <= 5) {
-			Destroy(this.gameObject);
+			this.health = 0;
 		}
 	}
 
