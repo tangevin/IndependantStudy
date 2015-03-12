@@ -21,7 +21,6 @@ public class Enemy : Pathfinding {
 	{
 		if (!hasPath())
 		{
-			Debug.Log("Enemy doesnt have path");
 			ground.removeLastWallsPlaced();
 			FindPath(this.transform.position, endPosition);
 		}
@@ -29,7 +28,13 @@ public class Enemy : Pathfinding {
 		Move();
 
 		if (Vector3.Distance(this.transform.position, endPosition) <= 5) {
-			this.health = 0;
+			GameObject[] mechs = GameObject.FindGameObjectsWithTag("Tower");
+
+			foreach(GameObject obj in mechs) {
+				obj.GetComponent<Fire>().getEnemyList().Remove(this);
+			}
+
+			Destroy(this.gameObject);
 		}
 	}
 

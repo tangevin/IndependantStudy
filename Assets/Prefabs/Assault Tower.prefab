@@ -14,6 +14,7 @@ GameObject:
   - 33: {fileID: 3358964}
   - 54: {fileID: 5401650}
   - 114: {fileID: 11460676}
+  - 114: {fileID: 11411904}
   m_Layer: 0
   m_Name: Assault Tower
   m_TagString: Tower
@@ -88,6 +89,20 @@ MeshCollider:
   m_SmoothSphereCollisions: 0
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: a4c6b220b50a2d74fa303166742e41b3, type: 3}
+--- !u!114 &11411904
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6baf52d1a633ada4489aa61192d51611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: []
+  PathType: 0
+  JS: 0
 --- !u!114 &11460676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -99,7 +114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56498940df55da438b68648467009fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRange: 150
 --- !u!135 &13561868
 SphereCollider:
   m_ObjectHideFlags: 1

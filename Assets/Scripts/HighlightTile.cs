@@ -42,4 +42,12 @@ public class HighlightTile : MonoBehaviour {
 			Destroy(currentlyHighlighted);
 		}
 	}
+
+	public void mechSelected(bool mechSelect) {
+		this.waveStarted = !mechSelect;
+
+		if (!waveStarted) {
+			Destroy(currentlyHighlighted);
+		}
+	}
 }

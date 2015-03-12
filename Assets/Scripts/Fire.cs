@@ -3,18 +3,31 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Fire : MonoBehaviour {
-	public static Weapon weapon = new WeaponGat();
+	public Weapon weapon;
 
-	private List<Enemy> enemyList;
+	private List<Enemy> enemyList = new List<Enemy>();
 	private float fireTimer;
 
 	void Start() {
-		enemyList = new List<Enemy>();
+		GameObject data = GameObject.Find("DataHolder");
+		PersistentData persistantData = data.GetComponent<PersistentData>();
+
+		int mechLocation = GameObject.Find("DataHolder").GetComponent<PersistentData>().mechs.IndexOf(this);
+		if (mechLocation == -1) {
+			weapon = persistantData.weapons[0];
+		}
+		else {
+			weapon = GameObject.Find("DataHolder").GetComponent<PersistentData>().mechs[mechLocation].getWeapon();
+		}
+
 		fireTimer = weapon.getFireRate();
 		transform.GetComponent<SphereCollider>().radius = weapon.getRange();
+
+		Debug.Log("Weapon:" + weapon.getName());
 	}
 
 	void Update() {
+		Debug.Log("Weapon:" + weapon.getName());
 		for (int i = enemyList.Count - 1; i >= 0; i--)
 		{
 			if (enemyList[i].getHealth() <= 0)
@@ -58,5 +71,17 @@ public class Fire : MonoBehaviour {
 				enemyList.Remove(e);
 			}
 		}
+	}
+
+	public List<Enemy> getEnemyList() {
+		return enemyList;
+	}
+
+	public Weapon getWeapon() {
+		return this.weapon;
+	}
+
+	public void setWeapon(Weapon weapon) {
+		this.weapon = weapon;
 	}
 }

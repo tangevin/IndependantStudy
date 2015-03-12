@@ -27,6 +27,16 @@ public class GameController : MonoBehaviour {
 	void Start() {
 		resources = 200;
 		health = 20;
+
+		GameObject data = GameObject.Find("DataHolder");
+		PersistentData persistantData = data.GetComponent<PersistentData>();
+
+		if (persistantData.mechs.Count == 0) {
+			foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Tower")) {
+				Debug.Log("Adding mech");
+				persistantData.mechs.Add(obj.GetComponent<Fire>());
+			}
+		}
 	}
 
 	void Update() {
@@ -69,5 +79,26 @@ public class GameController : MonoBehaviour {
 
 	public void StartWave() {
 		startWave = true;
+
+		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Tower"))
+		{
+			MechMove mech = obj.GetComponent<MechMove>();
+			mech.unselect();
+			mech.setEndPos(mech.transform.position);
+		}
+
+		GameObject.FindGameObjectWithTag("Ground").GetComponent<Ground>().setPlacingWalls(true);
+	}
+
+	public void unselectMechs() {
+		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Tower"))
+		{
+			MechMove mech = obj.GetComponent<MechMove>();
+			mech.unselect();
+			mech.setEndPos(mech.transform.position);
+		}
+
+		GameObject.FindGameObjectWithTag("Ground").GetComponent<HighlightTile>().mechSelected(false);
+		GameObject.FindGameObjectWithTag("Ground").GetComponent<Ground>().setPlacingWalls(true);
 	}
 }

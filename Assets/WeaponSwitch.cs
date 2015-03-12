@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class WeaponSwitch : MonoBehaviour {
-	public void test(){
+	/*public void test(){
 
 		if (weapon.getName().Equals("Gattling"))
 		{
@@ -14,5 +14,5 @@ public class WeaponSwitch : MonoBehaviour {
 		}
 		fireTimer = weapon.getFireRate();
 		transform.GetComponent<SphereCollider>().radius = weapon.getRange();
-	}
+	}*/
 }

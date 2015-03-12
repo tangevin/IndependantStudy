@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class Weapon : MonoBehaviour {
+public abstract class Weapon {
 	protected int damage;
 	protected float range;
 	protected float fireRate;

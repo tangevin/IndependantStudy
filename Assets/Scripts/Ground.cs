@@ -5,9 +5,11 @@ using System.Collections.Generic;
 public class Ground : MonoBehaviour {
 	public GameObject bottomLeft;
 	public GameObject topRight;
+	public Camera camera;
 	private bool[,] walls;
 	private List<GameObject> lastWallsPlaced;
 	private int[] lastNodePlaced;
+	private bool placingWalls;
 
 	// Use this for initialization
 	void Start () {
@@ -54,5 +56,20 @@ public class Ground : MonoBehaviour {
 		foreach (GameObject obj in lastWallsPlaced) {
 			GameObject.Destroy(obj);
 		}
+	}
+
+	void OnMouseUp() {
+		if(!placingWalls) {
+			foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Tower")) {
+				MechMove mech = obj.GetComponent<MechMove>();
+				if (mech.isSelected()) {
+					mech.setEndPos(camera.ScreenToWorldPoint(Input.mousePosition));
+				}
+			}
+		}
+	}
+
+	public void setPlacingWalls(bool placeWalls) {
+		this.placingWalls = placeWalls;
 	}
 }
