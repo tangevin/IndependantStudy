@@ -20,9 +20,7 @@ public class GameController : MonoBehaviour {
 	public Text WaveNumberText;
 	public Text EnemiesRemainingText;
 	public Text ResourcesText;
-	public int resources {get; set;}
 	public Text HealthText;
-	public int health {get; set;}
 
 	private int mechCount = 0;
 	private GameObject data;
@@ -39,8 +37,8 @@ public class GameController : MonoBehaviour {
 			}
 		}
 
-		health = persistantData.getHealth();
-		resources = persistantData.getResources();
+		HealthText.text = persistantData.health.ToString();
+		ResourcesText.text = persistantData.resources.ToString();
 	}
 
 	void Update() {
@@ -51,8 +49,8 @@ public class GameController : MonoBehaviour {
 		}
 
 		EnemiesRemainingText.text = GameObject.FindGameObjectsWithTag("Enemy").Length.ToString();
-		ResourcesText.text = resources.ToString();
-		HealthText.text = health.ToString();
+		HealthText.text = persistantData.health.ToString();
+		ResourcesText.text = persistantData.resources.ToString();
 	}
 	
 	IEnumerator SpawnEnemies() {

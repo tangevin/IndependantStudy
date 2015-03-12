@@ -36,7 +36,7 @@ public class Enemy : Pathfinding {
 
 			Destroy(this.gameObject);
 
-			GameObject.Find("Game Controller").GetComponent<GameController>().health -= 1;
+			GameObject.Find("DataHolder").GetComponent<PersistentData>().health -= 1;
 		}
 	}
 
@@ -52,6 +52,7 @@ public class Enemy : Pathfinding {
 		if (this.health <= 0)
 		{
 			GameObject.Destroy(this.gameObject);
+			GameObject.Find("DataHolder").GetComponent<PersistentData>().resources += 50;
 		}
 
 		return this.health;

@@ -23,7 +23,6 @@ public class Bullet : MonoBehaviour {
 
 	void FixedUpdate () {
 		Vector3 curPos = this.GetComponent<Rigidbody>().position;
-		Debug.Log("angle " + angle);
 
 		float dx = curPos.x - (Mathf.Cos (this.angle) * this.speed / Time.fixedDeltaTime); 
 		float dz = curPos.z - (Mathf.Sin (this.angle) * this.speed / Time.fixedDeltaTime);

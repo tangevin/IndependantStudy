@@ -9,14 +9,18 @@ public class PlaceWall : MonoBehaviour {
 	private Ground curMap;
 	private List<GameObject> wallsToPlace;
 	private GameController controller;
+	private GameObject data;
+	private PersistentData persistantData;
 
 	void Start() {
 		controller = GameObject.Find("Game Controller").GetComponent<GameController>();
+		data = GameObject.Find("DataHolder");
+		persistantData = data.GetComponent<PersistentData>();
 	}
 
 	void OnMouseDown() {
-		if (controller.resources > wallCost) {
-			controller.resources -= wallCost;
+		if (persistantData.resources >= wallCost) {
+			persistantData.resources -= wallCost;
 			wallsToPlace = new List<GameObject>();
 			curMap = GameObject.Find("Ground").GetComponent<Ground>();
 			Vector3 mousePos = Input.mousePosition;

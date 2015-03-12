@@ -84,6 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallNode: {fileID: 171576, guid: d737750a7f6cba14ba5929a70be40e64, type: 2}
   wall: {fileID: 181436, guid: f5e1042aaefe0794297c4f5f8d22176f, type: 2}
+  wallCost: 25
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
