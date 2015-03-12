@@ -35,6 +35,8 @@ public class Enemy : Pathfinding {
 			}
 
 			Destroy(this.gameObject);
+
+			GameObject.Find("Game Controller").GetComponent<GameController>().health -= 1;
 		}
 	}
 

@@ -20,18 +20,17 @@ public class GameController : MonoBehaviour {
 	public Text WaveNumberText;
 	public Text EnemiesRemainingText;
 	public Text ResourcesText;
-	public static int resources {get; set;}
+	public int resources {get; set;}
 	public Text HealthText;
-	public static int health {get; set;}
+	public int health {get; set;}
 
 	private int mechCount = 0;
+	private GameObject data;
+	private PersistentData persistantData;
 	
 	void Start() {
-		resources = 200;
-		health = 20;
-
-		GameObject data = GameObject.Find("DataHolder");
-		PersistentData persistantData = data.GetComponent<PersistentData>();
+		data = GameObject.Find("DataHolder");
+		persistantData = data.GetComponent<PersistentData>();
 
 		if (persistantData.mechs.Count == 0) {
 			foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Tower")) {
@@ -39,6 +38,9 @@ public class GameController : MonoBehaviour {
 				persistantData.mechs.Add(obj.GetComponent<Fire>());
 			}
 		}
+
+		health = persistantData.getHealth();
+		resources = persistantData.getResources();
 	}
 
 	void Update() {

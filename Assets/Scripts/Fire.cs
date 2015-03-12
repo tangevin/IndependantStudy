@@ -38,7 +38,7 @@ public class Fire : MonoBehaviour {
 			if (enemyList[i].getHealth() <= 0)
 			{
 				enemyList.RemoveAt(i);
-				GameController.resources += 50;
+				GameObject.Find("Game Controller").GetComponent<GameController>().resources += 50;
 			}
 		}
 
