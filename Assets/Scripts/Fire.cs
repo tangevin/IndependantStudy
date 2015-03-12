@@ -64,8 +64,9 @@ public class Fire : MonoBehaviour {
 			shot = Instantiate(bullet, start, this.GetComponent<Rigidbody>().rotation) as GameObject;
 			if (shot)
 			{
+				Vector3 enemyPos = enemyList[0].GetComponent<Rigidbody>().position;
 				Debug.Log("GO!");
-				shot.GetComponent<Bullet>().startBullet(start, enemyList[0].GetComponent<Rigidbody>().position, weapon.getSpeed());
+				shot.GetComponent<Bullet>().startBullet(start, new Vector3(enemyPos.x + 20, enemyPos.y, enemyPos.z), weapon.getSpeed());
 			}
 
 

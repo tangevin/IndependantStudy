@@ -6,6 +6,10 @@ using System.Collections.Generic;
 public class MechMenuController : MonoBehaviour {
 	public Text weaponText;
 	private int weaponIndex;
+
+	public Text mechText;
+	private int mechIndex;
+
 	private List<Fire> mechs;
 	private List<Weapon> weapons;
 	private Fire selectedMech;
@@ -16,9 +20,12 @@ public class MechMenuController : MonoBehaviour {
 		PersistentData persistantData = data.GetComponent<PersistentData>();
 		mechs = persistantData.mechs;
 		weapons = persistantData.weapons;
-		selectedMech = mechs[0];
+		this.mechIndex = 0;
+		selectedMech = mechs[mechIndex];
+
 
 		weaponText.text = selectedMech.getWeapon().getName();
+
 
 		int i = 0;
 		foreach (Weapon weapon in weapons) {
@@ -27,6 +34,8 @@ public class MechMenuController : MonoBehaviour {
 			}
 			i++;
 		}
+
+		mechText.text = this.mechIndex.ToString();
 	}
 	
 	// Update is called once per frame
@@ -35,7 +44,6 @@ public class MechMenuController : MonoBehaviour {
 	}
 
 	public void weaponUp() {
-		Debug.Log("!!HERE");
 		this.weaponIndex++;
 		if (this.weaponIndex == weapons.Count) {
 			this.weaponIndex = 0;
@@ -45,7 +53,6 @@ public class MechMenuController : MonoBehaviour {
 	}
 
 	public void weaponDown() {
-		Debug.Log("!YAR");
 		this.weaponIndex--;
 		if (this.weaponIndex < 0) {
 			this.weaponIndex = weapons.Count - 1;
@@ -56,5 +63,56 @@ public class MechMenuController : MonoBehaviour {
 
 	public void setMechWeapon() {
 		selectedMech.setWeapon(weapons[this.weaponIndex]);
+	}
+
+	
+	public void mechUp(){
+		this.mechIndex++;
+		if (this.mechIndex == mechs.Count) {
+			this.mechIndex = 0;
+		}
+
+		setMechWeapon();
+		
+		this.selectedMech = mechs[mechIndex];
+		mechText.text = this.mechIndex.ToString();
+
+		if (!(this.selectedMech.weapon.getName().Equals(weapons[this.weaponIndex].getName())))
+		{
+			if (this.selectedMech.weapon.getName().Equals("Gattling"))
+			{
+				this.weaponIndex = 0;
+			}
+			else
+			{
+				this.weaponIndex = 1;
+			}
+			this.weaponText.text = this.weapons[this.weaponIndex].getName();
+		}
+	}
+
+	public void mechDown() {
+		this.mechIndex--;
+		if (this.mechIndex < 0) {
+			this.mechIndex = mechs.Count - 1;
+		}
+		
+		this.selectedMech = mechs[mechIndex];
+
+		setMechWeapon();
+		mechText.text = this.mechIndex.ToString();
+
+		if (!(this.selectedMech.weapon.getName().Equals(weapons[this.weaponIndex].getName())))
+		{
+			if (this.selectedMech.weapon.getName().Equals("Gattling"))
+			{
+				this.weaponIndex = 0;
+			}
+			else
+			{
+				this.weaponIndex = 1;
+			}
+			this.weaponText.text = this.weapons[this.weaponIndex].getName();
+		}
 	}
 }

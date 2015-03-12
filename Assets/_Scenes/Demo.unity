@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6e5bf06f231cf4c9354f633aca9f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedMech: {fileID: 0}
 --- !u!4 &247990944
 Transform:
   m_ObjectHideFlags: 0
@@ -1305,6 +1306,10 @@ Prefab:
     - target: {fileID: 11460676, guid: ffb36962d3074b04885f91da1daec457, type: 2}
       propertyPath: weapon
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494264, guid: ffb36962d3074b04885f91da1daec457, type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ffb36962d3074b04885f91da1daec457, type: 2}
