@@ -7,17 +7,21 @@ public class Fire : MonoBehaviour {
 
 	private List<Enemy> enemyList = new List<Enemy>();
 	private float fireTimer;
+	private int mechCount;
 
 	void Start() {
+		GameController controller = GameObject.Find("Game Controller").GetComponent<GameController>();
+		controller.addMech();
+		mechCount = controller.getMechCount();
+
 		GameObject data = GameObject.Find("DataHolder");
 		PersistentData persistantData = data.GetComponent<PersistentData>();
 
-		int mechLocation = GameObject.Find("DataHolder").GetComponent<PersistentData>().mechs.IndexOf(this);
-		if (mechLocation == -1) {
+		if (persistantData.mechs.Count == 0) {
 			weapon = persistantData.weapons[0];
 		}
 		else {
-			weapon = GameObject.Find("DataHolder").GetComponent<PersistentData>().mechs[mechLocation].getWeapon();
+			weapon = GameObject.Find("DataHolder").GetComponent<PersistentData>().mechs[mechCount - 1].getWeapon();
 		}
 
 		fireTimer = weapon.getFireRate();
@@ -53,6 +57,10 @@ public class Fire : MonoBehaviour {
 		{
 			fireTimer -= Time.fixedDeltaTime;
 		}
+	}
+
+	void Awake() {
+		DontDestroyOnLoad(this.gameObject);
 	}
 
 	void OnTriggerEnter(Collider other) {

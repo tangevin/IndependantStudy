@@ -23,6 +23,8 @@ public class GameController : MonoBehaviour {
 	public static int resources {get; set;}
 	public Text HealthText;
 	public static int health {get; set;}
+
+	private int mechCount = 0;
 	
 	void Start() {
 		resources = 200;
@@ -100,5 +102,14 @@ public class GameController : MonoBehaviour {
 
 		GameObject.FindGameObjectWithTag("Ground").GetComponent<HighlightTile>().mechSelected(false);
 		GameObject.FindGameObjectWithTag("Ground").GetComponent<Ground>().setPlacingWalls(true);
+	}
+
+	public int getMechCount() {
+		return this.mechCount;
+	}
+
+	public void addMech() {
+		this.mechCount++;
+		Debug.Log("mech Count:" + mechCount);
 	}
 }

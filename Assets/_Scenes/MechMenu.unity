@@ -87,7 +87,6 @@ GameObject:
   - 23: {fileID: 103501770}
   - 33: {fileID: 103501767}
   - 54: {fileID: 103501769}
-  - 114: {fileID: 103501768}
   m_Layer: 0
   m_Name: Assault Tower
   m_TagString: Tower
@@ -103,18 +102,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 501501021}
   m_GameObject: {fileID: 103501766}
   m_Mesh: {fileID: 4300000, guid: a4c6b220b50a2d74fa303166742e41b3, type: 3}
---- !u!114 &103501768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11460676, guid: ffb36962d3074b04885f91da1daec457,
-    type: 2}
-  m_PrefabInternal: {fileID: 501501021}
-  m_GameObject: {fileID: 103501766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b56498940df55da438b68648467009fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &103501769
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -462,6 +449,7 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11411904, guid: ffb36962d3074b04885f91da1daec457, type: 2}
+    - {fileID: 11460676, guid: ffb36962d3074b04885f91da1daec457, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: ffb36962d3074b04885f91da1daec457, type: 2}
   m_RootGameObject: {fileID: 103501766}
   m_IsPrefabParent: 0
