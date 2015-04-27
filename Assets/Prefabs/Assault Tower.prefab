@@ -13,6 +13,7 @@ GameObject:
   - 23: {fileID: 2301650}
   - 33: {fileID: 3358964}
   - 54: {fileID: 5401650}
+  - 114: {fileID: 11416094}
   - 114: {fileID: 11460676}
   - 114: {fileID: 11411904}
   m_Layer: 0
@@ -28,8 +29,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101650}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: -.707106829, z: 0, w: .707106829}
+  m_LocalPosition: {x: 0, y: 7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -103,6 +104,19 @@ MonoBehaviour:
   Path: []
   PathType: 0
   JS: 0
+--- !u!114 &11416094
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 163a62c5867a7ad4b8fab4f17afa1d42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  bullet: {fileID: 0}
 --- !u!114 &11460676
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class MechMove : Pathfinding {
-	
+	private bool inDialogue;
+
 	private bool selected = false;
 	private GameObject target;
 	private Vector3 endPosition;
@@ -42,19 +43,21 @@ public class MechMove : Pathfinding {
 	}
 
 	void OnMouseUp() {
-		this.selected = true;
-		GameObject tileObj = GameObject.FindGameObjectWithTag("Ground");
-		HighlightTile tile = tileObj.GetComponent<HighlightTile>();
-		tile.mechSelected(true);
-		
-		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Tower")) 
-		{
-			if (!obj.Equals(this.gameObject)) {
-				obj.GetComponent<MechMove>().unselect();
+		if (!inDialogue) {
+			this.selected = true;
+			GameObject tileObj = GameObject.FindGameObjectWithTag("Ground");
+			HighlightTile tile = tileObj.GetComponent<HighlightTile>();
+			tile.mechSelected(true);
+			
+			foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Tower")) 
+			{
+				if (!obj.Equals(this.gameObject)) {
+					obj.GetComponent<MechMove>().unselect();
+				}
 			}
+			
+			GameObject.FindGameObjectWithTag("Ground").GetComponent<Ground>().setPlacingWalls(false);
 		}
-
-		GameObject.FindGameObjectWithTag("Ground").GetComponent<Ground>().setPlacingWalls(false);
 	}
 	
 	public void unselect() {
@@ -67,5 +70,9 @@ public class MechMove : Pathfinding {
 
 	public bool isMoving() {
 		return this.moving;
+	}
+
+	public void setInDialogue(bool dialogue) {
+		this.inDialogue = dialogue;
 	}
 }

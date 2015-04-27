@@ -45,8 +45,8 @@ MonoBehaviour:
   HeuristicAggression: 0
   HighestPoint: 100
   LowestPoint: -50
-  MapStartPosition: {x: -450, y: -315}
-  MapEndPosition: {x: 450, y: 315}
+  MapStartPosition: {x: -500, y: -285}
+  MapEndPosition: {x: 450, y: 285}
   DisallowedTags:
   - Tower
   - Wall

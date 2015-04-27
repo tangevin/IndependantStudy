@@ -22,7 +22,6 @@ public class GameController : MonoBehaviour {
 	public Text ResourcesText;
 	public Text HealthText;
 
-	private int mechCount = 0;
 	private GameObject data;
 	private PersistentData persistantData;
 	
@@ -30,15 +29,10 @@ public class GameController : MonoBehaviour {
 		data = GameObject.Find("DataHolder");
 		persistantData = data.GetComponent<PersistentData>();
 
-		if (persistantData.mechs.Count == 0) {
-			foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Tower")) {
-				Debug.Log("Adding mech");
-				persistantData.mechs.Add(obj.GetComponent<Fire>());
-			}
-		}
-
 		HealthText.text = persistantData.health.ToString();
-		ResourcesText.text = persistantData.resources.ToString();
+		if(!Application.loadedLevelName.StartsWith("Tutorial")) {
+			ResourcesText.text = persistantData.resources.ToString();
+		}
 	}
 
 	void Update() {
@@ -48,9 +42,12 @@ public class GameController : MonoBehaviour {
 			StartCoroutine(SpawnEnemies());
 		}
 
-		EnemiesRemainingText.text = GameObject.FindGameObjectsWithTag("Enemy").Length.ToString();
 		HealthText.text = persistantData.health.ToString();
-		ResourcesText.text = persistantData.resources.ToString();
+
+		if (!Application.loadedLevelName.StartsWith("Tutorial")) {
+			EnemiesRemainingText.text = GameObject.FindGameObjectsWithTag("Enemy").Length.ToString();
+			ResourcesText.text = persistantData.resources.ToString();
+		}
 	}
 	
 	IEnumerator SpawnEnemies() {
@@ -102,14 +99,5 @@ public class GameController : MonoBehaviour {
 
 		GameObject.FindGameObjectWithTag("Ground").GetComponent<HighlightTile>().mechSelected(false);
 		GameObject.FindGameObjectWithTag("Ground").GetComponent<Ground>().setPlacingWalls(true);
-	}
-
-	public int getMechCount() {
-		return this.mechCount;
-	}
-
-	public void addMech() {
-		this.mechCount++;
-		Debug.Log("mech Count:" + mechCount);
 	}
 }

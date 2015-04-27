@@ -6,8 +6,8 @@ using System.Collections.Generic;
 public class MechSelectScript : MonoBehaviour {
 	public Text mechText;
 	private int mechIndex;
-	private List<Fire> mechs;
-	private Fire curMech;
+	private List<Mech> mechs;
+	private Mech curMech;
 	private GameObject data;
 	private PersistentData persistantData;
 
@@ -22,7 +22,7 @@ public class MechSelectScript : MonoBehaviour {
 		mechText.text = this.mechIndex.ToString();
 	}
 
-	public Fire getCurrentMech() {
+	public Mech getCurrentMech() {
 		return this.curMech;
 	}
 

@@ -8,37 +8,31 @@ public class Fire : MonoBehaviour {
 
 	private List<Enemy> enemyList = new List<Enemy>();
 	private float fireTimer;
-	private int mechCount;
+
+	private Mech mech;
 
 	void Start() {
 		GameController controller = GameObject.Find("Game Controller").GetComponent<GameController>();
-		controller.addMech();
-		mechCount = controller.getMechCount();
 
 		GameObject data = GameObject.Find("DataHolder");
 		PersistentData persistantData = data.GetComponent<PersistentData>();
 
-		if (persistantData.mechs.Count == 0) {
-			weapon = persistantData.weapons[0];
-		}
-		else {
-			weapon = GameObject.Find("DataHolder").GetComponent<PersistentData>().mechs[mechCount - 1].getWeapon();
-		}
+		mech = this.GetComponent<Mech>();
 
+		weapon = persistantData.mechs[mech.id - 1].getWeapon();
 		fireTimer = weapon.getFireRate();
 		transform.GetComponent<SphereCollider>().radius = weapon.getRange();
 
-		Debug.Log("Weapon:" + weapon.getName());
+		Debug.Log("Weapon:" + weapon.getName() + " in mech " + mech.id);
 	}
 
 	void Update() {
-		Debug.Log("Weapon:" + weapon.getName());
+		Debug.Log("Weapon:" + weapon.getName() + " in mech " + mech.id);
 		for (int i = enemyList.Count - 1; i >= 0; i--)
 		{
 			if (enemyList[i].getHealth() <= 0)
 			{
 				enemyList.RemoveAt(i);
-				GameObject.Find("DataHolder").GetComponent<PersistentData>().resources += 50;
 			}
 		}
 
@@ -76,10 +70,6 @@ public class Fire : MonoBehaviour {
 				enemyList.RemoveAt(0);
 			}
 		}
-	}
-
-	void Awake() {
-		DontDestroyOnLoad(this.gameObject);
 	}
 
 	void OnTriggerEnter(Collider other) {

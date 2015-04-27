@@ -27,7 +27,7 @@ public class Enemy : Pathfinding {
 		
 		Move();
 
-		if (Vector3.Distance(this.transform.position, endPosition) <= 5) {
+		if (Vector3.Distance(this.transform.position, endPosition) <= 10) {
 			GameObject[] mechs = GameObject.FindGameObjectsWithTag("Tower");
 
 			foreach(GameObject obj in mechs) {
