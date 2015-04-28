@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class PersistentData : MonoBehaviour {
 	public List<Weapon> weapons {get; set;}
-	public List<Fire> mechs {get; set;}
+	public List<Mech> mechs {get; set;}
 	public Fire selectedMech;
 	public int resources {get; set;}
 	public int health {get; set;}
@@ -19,7 +19,7 @@ public class PersistentData : MonoBehaviour {
 			weapons.Add(new WeaponSniper());
 		}
 		if (mechs == null) {
-			mechs = new List<Fire>();
+			mechs = new List<Mech>();
 		}
 		if(health == 0) {
 			Debug.Log("Set Health");

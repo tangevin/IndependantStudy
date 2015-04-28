@@ -10,9 +10,9 @@ public class MechMenuController : MonoBehaviour {
 	public Text mechText;
 	private int mechIndex;
 
-	private List<Fire> mechs;
+	private List<Mech> mechs;
 	private List<Weapon> weapons;
-	private Fire selectedMech;
+	private Mech selectedMech;
 
 	// Use this for initialization
 	void Start () {
@@ -77,9 +77,9 @@ public class MechMenuController : MonoBehaviour {
 		this.selectedMech = mechs[mechIndex];
 		mechText.text = this.mechIndex.ToString();
 
-		if (!(this.selectedMech.weapon.getName().Equals(weapons[this.weaponIndex].getName())))
+		if (!(this.selectedMech.getWeapon().getName().Equals(weapons[this.weaponIndex].getName())))
 		{
-			if (this.selectedMech.weapon.getName().Equals("Gattling"))
+			if (this.selectedMech.getWeapon().getName().Equals("Gattling"))
 			{
 				this.weaponIndex = 0;
 			}
@@ -102,9 +102,9 @@ public class MechMenuController : MonoBehaviour {
 		setMechWeapon();
 		mechText.text = this.mechIndex.ToString();
 
-		if (!(this.selectedMech.weapon.getName().Equals(weapons[this.weaponIndex].getName())))
+		if (!(this.selectedMech.getWeapon().getName().Equals(weapons[this.weaponIndex].getName())))
 		{
-			if (this.selectedMech.weapon.getName().Equals("Gattling"))
+			if (this.selectedMech.getWeapon().getName().Equals("Gattling"))
 			{
 				this.weaponIndex = 0;
 			}
